@@ -138,6 +138,8 @@ const NoMatch = ({ location }) => (
   <div>
     <h3>
       No match for <code>{location.pathname}</code>
+      <br />
+      <Link to="/">Return to homepage.</Link>
     </h3>
   </div>
 );
