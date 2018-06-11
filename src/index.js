@@ -89,6 +89,13 @@ class Game extends React.Component {
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
           </div>
+          <div>
+            <Link to="/first-route"><button>First Route</button></Link>
+            <Link to="/second-route"><button>Second Route</button></Link>
+            <Link to="/"><button>Back to Home</button></Link>
+            <Route path="/first-route" component={Board}/>
+            <Route path="/second-route" component={Square}/>
+          </div>
         </div>
       </Router>
     );
