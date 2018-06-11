@@ -80,22 +80,79 @@ class Board extends React.Component {
 class Game extends React.Component {
   render() {
     return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+)
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+)
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.path}/:topicId`} component={Topic}/>
+    <Route exact path={match.path} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+)
+
+class App extends React.Component {
+  render() {
+    return (
       <Router>
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-          <div>
-            <Link to="/first-route"><button>First Route</button></Link>
-            <Link to="/second-route"><button>Second Route</button></Link>
-            <Link to="/"><button>Back to Home</button></Link>
-            <Route path="/first-route" component={Board}/>
-            <Route path="/second-route" component={Square}/>
-          </div>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/topics">Topics</Link>
+            </li>
+          </ul>
+          <hr />
+          <Route exact path="/" component={Game}/>
+          <Route path="/about" component={About}/>
+          <Route path="/topics" component={Topics}/>
         </div>
       </Router>
     );
@@ -105,7 +162,7 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(
-  <Game />,
+  <App />,
   document.getElementById('root')
 );
 
