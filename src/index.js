@@ -4,7 +4,8 @@ import './index.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom'
 
 function Square(props) {
@@ -133,6 +134,14 @@ const Topics = ({ match }) => (
   </div>
 )
 
+const NoMatch = ({ location }) => (
+  <div>
+    <h3>
+      No match for <code>{location.pathname}</code>
+    </h3>
+  </div>
+);
+
 class App extends React.Component {
   render() {
     return (
@@ -150,9 +159,12 @@ class App extends React.Component {
             </li>
           </ul>
           <hr />
-          <Route exact path="/" component={Game}/>
-          <Route path="/about" component={About}/>
-          <Route path="/topics" component={Topics}/>
+          <Switch>
+            <Route exact path="/" component={Game}/>
+            <Route path="/about" component={About}/>
+            <Route path="/topics" component={Topics}/>
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </Router>
     );
