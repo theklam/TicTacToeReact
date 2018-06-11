@@ -97,6 +97,10 @@ class Game extends React.Component {
 const About = () => (
   <div>
     <h2>About</h2>
+    <ul>
+      <Link to="/about/company"><li>Company</li></Link>
+    </ul>
+    <Route exact path="/about/company" component={CompanyInfo}/>
   </div>
 )
 
@@ -126,11 +130,16 @@ const Topics = ({ match }) => (
         </Link>
       </li>
     </ul>
-
     <Route path={`${match.path}/:topicId`} component={Topic}/>
     <Route exact path={match.path} render={() => (
       <h3>Please select a topic.</h3>
     )}/>
+  </div>
+)
+
+const CompanyInfo = () => (
+  <div>
+    <h3>Babbel is a language-learning company based in Berlin!</h3>
   </div>
 )
 
@@ -164,7 +173,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Game}/>
             <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
+            <Route exact path="/topics" component={Topics}/>
             <Route component={NoMatch} />
           </Switch>
         </div>
