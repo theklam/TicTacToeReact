@@ -173,7 +173,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Game}/>
             <Route path="/about" component={About}/>
-            <Route exact path="/topics" component={Topics}/>
+            <Route path="/topics" component={Topics}/>
             <Route component={NoMatch} />
           </Switch>
         </div>
