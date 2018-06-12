@@ -94,20 +94,21 @@ class Game extends React.Component {
   }
 }
 
-const About = () => (
+const About = ({ match }) => (
   <div>
     <h2>About</h2>
     <ul>
-      <Link to="/about/company"><li>Company</li></Link>
-      <Link to="/about/values"><li>Values</li></Link>
-      <Link to="/about/yaga"><li>Yaga</li></Link>
+      <Link to={`${match.url}/company`}><li>Company</li></Link>
+      <Link to={`${match.url}/values`}><li>Values</li></Link>
+      <Link to={`${match.url}/yaga`}><li>Yaga</li></Link>
+      <Link to={`${match.url}/example`}><li>Example</li></Link>
     </ul>
   </div>
 )
 
 const Topic = ({ match }) => (
   <div>
-    <h3>{match.params.topicId}</h3>
+    <h3>Welcome to the page about {match.params.topicId}</h3>
   </div>
 )
 
