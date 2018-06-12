@@ -100,7 +100,6 @@ const About = () => (
     <ul>
       <Link to="/about/company"><li>Company</li></Link>
     </ul>
-    <Route exact path="/about/company" component={CompanyInfo}/>
   </div>
 )
 
@@ -172,6 +171,7 @@ class App extends React.Component {
           <hr />
           <Switch>
             <Route exact path="/" component={Game}/>
+            <Route path="/about/company" component={CompanyInfo}/>
             <Route path="/about" component={About}/>
             <Route path="/topics" component={Topics}/>
             <Route component={NoMatch} />
