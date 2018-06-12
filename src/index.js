@@ -99,6 +99,8 @@ const About = () => (
     <h2>About</h2>
     <ul>
       <Link to="/about/company"><li>Company</li></Link>
+      <Link to="/about/values"><li>Values</li></Link>
+      <Link to="/about/yaga"><li>Yaga</li></Link>
     </ul>
   </div>
 )
@@ -136,12 +138,6 @@ const Topics = ({ match }) => (
   </div>
 )
 
-const CompanyInfo = () => (
-  <div>
-    <h3>Babbel is a language-learning company based in Berlin!</h3>
-  </div>
-)
-
 const NoMatch = ({ location }) => (
   <div>
     <h3>
@@ -171,7 +167,7 @@ class App extends React.Component {
           <hr />
           <Switch>
             <Route exact path="/" component={Game}/>
-            <Route path="/about/company" component={CompanyInfo}/>
+            <Route path="/about/:topicId" component={Topic}/>
             <Route path="/about" component={About}/>
             <Route path="/topics" component={Topics}/>
             <Route component={NoMatch} />
